@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bordados de Refúgio — Transforme bordado em renda extra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:#D8A7A0;
+    --rose-deep:#C28E89;
+    --sage:#A9B79C;
+    --sage-deep:#8FA180;
+    --cream:#FBF5EE;
+    --cream-2:#F4E9DD;
+    --plum:#4A3942;
+    --plum-soft:#7A6670;
+    --white:#FFFDFB;
+    --shadow: 0 8px 24px rgba(74,57,66,0.12);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins', sans-serif;
+    background:var(--cream);
+    color:var(--plum);
+    line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block; border-radius:16px;}
+  .wrap{max-width:480px; margin:0 auto; padding:0 22px;}
+  h1,h2,h3{font-family:'Poppins', sans-serif; font-weight:700; line-height:1.25;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+
+  /* ---------- thread divider (signature element) ---------- */
+  .thread{
+    width:100%; height:34px;
+    margin:6px 0;
+  }
+  .thread svg{width:100%; height:100%;}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal.delay1{transition-delay:.08s;}
+  .reveal.delay2{transition-delay:.18s;}
+  .reveal.delay3{transition-delay:.28s;}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important;}
+  }
+
+  /* ---------- top trust bar ---------- */
+  .trustbar{
+    background:var(--plum);
+    color:var(--cream);
+    text-align:center;
+    font-size:12.5px;
+    font-weight:500;
+    letter-spacing:.03em;
+    padding:10px 14px;
+  }
+  .trustbar strong{color:var(--rose); font-weight:700;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:38px 0 30px;
+    text-align:center;
+    position:relative;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--sage-deep); font-weight:600;
+    background:rgba(169,183,156,0.18);
+    padding:6px 14px; border-radius:30px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:30px;
+    color:var(--plum);
+    margin-bottom:14px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--rose-deep);
+  }
+  .hero p.sub{
+    font-size:15.5px;
+    color:var(--plum-soft);
+    margin-bottom:24px;
+  }
+  .hero-img{
+    max-width:280px; margin:0 auto 26px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .hero-img img{border-radius:18px;}
+
+  /* ---------- CTA button (signature animation) ---------- */
+  .cta-btn{
+    display:block;
+    width:100%;
+    background:linear-gradient(135deg, var(--rose) 0%, var(--rose-deep) 100%);
+    color:var(--white);
+    font-family:'Poppins', sans-serif;
+    font-weight:600;
+    font-size:16.5px;
+    letter-spacing:.02em;
+    padding:18px 20px;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+    animation:pulseGlow 2.6s ease-in-out infinite;
+    border:none;
+  }
+  .cta-btn::after{
+    content:'';
+    position:absolute; top:0; left:-60%;
+    width:40%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform:skewX(-20deg);
+    animation:shine 3.4s ease-in-out infinite;
+  }
+  @keyframes shine{
+    0%{left:-60%;}
+    45%{left:130%;}
+    100%{left:130%;}
+  }
+  @keyframes pulseGlow{
+    0%,100%{ box-shadow:0 8px 24px rgba(194,142,137,0.35); transform:scale(1);}
+    50%{ box-shadow:0 10px 30px rgba(194,142,137,0.55); transform:scale(1.018);}
+  }
+  .cta-micro{
+    text-align:center;
+    font-size:12px;
+    color:var(--plum-soft);
+    margin-top:10px;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- generic section ---------- */
+  section{padding:34px 0;}
+  .section-title{
+    font-size:23px;
+    text-align:center;
+    color:var(--plum);
+    margin-bottom:8px;
+  }
+  .section-title em{font-style:italic; color:var(--sage-deep);}
+  .section-sub{
+    text-align:center;
+    font-size:14.5px;
+    color:var(--plum-soft);
+    margin-bottom:26px;
+  }
+
+  .img-card{
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+  }
+  .img-card img{margin:0; border-radius:18px;}
+  .income-card{
+    background:var(--white);
+    border-radius:18px;
+    padding:20px;
+    box-shadow:var(--shadow);
+    margin-bottom:16px;
+    border-left:4px solid var(--sage);
+  }
+  .income-card .tag{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:600;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:var(--sage-deep);
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .income-card h3{font-size:17px; margin-bottom:6px; color:var(--plum);}
+  .income-card p{font-size:14px; color:var(--plum-soft);}
+
+  /* ---------- objection breaker ---------- */
+  .objection{
+    background:linear-gradient(160deg, var(--cream-2), var(--cream));
+    border-radius:20px;
+    padding:26px 20px;
+    text-align:center;
+    margin-top:10px;
+  }
+  .objection h3{font-size:19px; margin-bottom:10px;}
+  .objection p{font-size:14.5px; color:var(--plum-soft); margin-bottom:4px;}
+  .objection .strike{
+    text-decoration:line-through;
+    color:#b58a85;
+  }
+
+  /* ---------- what you get list ---------- */
+  .deliver-list li{
+    display:flex; gap:12px;
+    align-items:flex-start;
+    background:var(--white);
+    border-radius:14px;
+    padding:14px 16px;
+    margin-bottom:10px;
+    box-shadow:0 4px 14px rgba(74,57,66,0.06);
+  }
+  .deliver-list .ic{
+    width:30px; height:30px; flex-shrink:0;
+  }
+  .deliver-list strong{display:block; font-size:14.5px; color:var(--plum);}
+  .deliver-list span{font-size:13px; color:var(--plum-soft);}
+
+  /* ---------- gallery placeholder grid ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:8px;
+  }
+  .gallery .tile{
+    aspect-ratio:1/1;
+    border-radius:10px;
+    background:var(--cream-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .gallery .tile img{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:10px;
+    margin:0;
+  }
+
+  /* ---------- who is it for ---------- */
+  .who-card{
+    display:flex; gap:14px; align-items:flex-start;
+    background:var(--white);
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 4px 14px rgba(74,57,66,0.06);
+  }
+  .who-card .ic-wrap{
+    width:44px; height:44px;
+    border-radius:50%;
+    background:rgba(216,167,160,0.18);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .who-card .ic-wrap svg{width:22px; height:22px;}
+  .who-card h4{font-size:15px; margin-bottom:3px;}
+  .who-card p{font-size:13px; color:var(--plum-soft);}
+
+  /* ---------- bonus ---------- */
+  .bonus-card{
+    background:var(--white);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:14px;
+    box-shadow:var(--shadow);
+    display:flex; gap:14px; align-items:center;
+  }
+  .bonus-num{
+    font-family:'Poppins', sans-serif;
+    font-style:italic;
+    font-size:26px;
+    color:var(--rose-deep);
+    flex-shrink:0;
+    width:38px;
+  }
+  .bonus-card h4{font-size:15px; margin-bottom:4px;}
+  .bonus-card p{font-size:13px; color:var(--plum-soft); margin-bottom:6px;}
+  .bonus-card .val{font-size:12px;}
+  .bonus-card .val .old{text-decoration:line-through; color:#b58a85;}
+  .bonus-card .val .free{color:var(--sage-deep); font-weight:600;}
+
+  /* ---------- countdown ---------- */
+  .countdown-wrap{
+    text-align:center;
+    background:var(--plum);
+    border-radius:18px;
+    padding:22px 18px;
+    color:var(--cream);
+  }
+  .countdown-wrap .label{
+    font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--rose); margin-bottom:10px; display:block;
+  }
+  .countdown{
+    display:flex; justify-content:center; gap:10px;
+  }
+  .countdown .box{
+    background:rgba(255,255,255,0.08);
+    border-radius:10px;
+    padding:10px 12px;
+    min-width:54px;
+  }
+  .countdown .num{font-size:22px; font-weight:600; font-family:'Poppins',sans-serif;}
+  .countdown .unit{font-size:10px; letter-spacing:.05em; opacity:.75;}
+
+  /* ---------- pricing cards ---------- */
+  .urgency-ribbon{
+    text-align:center;
+    background:var(--rose-deep);
+    color:var(--white);
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:9px 14px;
+    border-radius:30px;
+    margin-bottom:18px;
+    animation:pulseGlow 2.6s ease-in-out infinite;
+  }
+
+  .price-card{
+    background:var(--white);
+    border-radius:22px;
+    padding:24px 20px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
+    position:relative;
+    border:2px solid transparent;
+  }
+  .price-card.featured{
+    border:3px solid var(--rose-deep);
+    box-shadow:0 14px 40px rgba(194,142,137,0.32);
+    background:linear-gradient(180deg, var(--white) 0%, #FFF8F4 100%);
+    transform:scale(1.02);
+  }
+  .badge-best{
+    position:absolute; top:-15px; left:50%; transform:translateX(-50%);
+    background:var(--rose-deep);
+    color:var(--white);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:7px 16px;
+    border-radius:20px;
+    white-space:nowrap;
+    box-shadow:0 4px 12px rgba(194,142,137,0.4);
+  }
+  .price-card h3{font-size:18px; text-align:center; margin:8px 0 4px;}
+  .price-card .sub-tag{
+    text-align:center; font-size:12.5px; color:var(--plum-soft); margin-bottom:16px;
+  }
+  .price-card .feat-list{margin-bottom:18px;}
+  .price-card .feat-list li{
+    display:flex; gap:8px; align-items:flex-start;
+    font-size:13.5px; color:var(--plum); margin-bottom:9px;
+  }
+  .price-card .feat-list li svg{width:16px; height:16px; flex-shrink:0; margin-top:2px;}
+  .price-card .feat-list li.muted{color:var(--plum-soft);}
+  .price-box{text-align:center; margin-bottom:16px;}
+  .price-box .from{font-size:13px; color:var(--plum-soft);}
+  .price-box .from .strike{text-decoration:line-through;}
+  .price-box .now{
+    font-family:'Poppins', sans-serif;
+    font-size:38px;
+    color:var(--rose-deep);
+    font-weight:800;
+  }
+  .price-box .now sup{font-size:17px; top:-0.7em; font-weight:700;}
+  .price-box .save{
+    display:inline-block; margin-top:6px;
+    font-size:12.5px; font-weight:700;
+    color:var(--sage-deep);
+    background:rgba(169,183,156,0.18);
+    padding:5px 14px; border-radius:20px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    background:var(--white);
+    border-radius:14px;
+    margin-bottom:10px;
+    box-shadow:0 4px 14px rgba(74,57,66,0.06);
+    overflow:hidden;
+  }
+  .faq-q{
+    padding:16px 18px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:14.5px; font-weight:500;
+    cursor:pointer;
+  }
+  .faq-q .plus{
+    font-size:20px; color:var(--rose-deep);
+    transition:transform .3s ease;
+  }
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    font-size:13.5px;
+    color:var(--plum-soft);
+    padding:0 18px;
+  }
+  .faq-item.open .faq-a{padding-bottom:16px;}
+
+  /* ---------- guarantee ---------- */
+  .guarantee{
+    text-align:center;
+    background:rgba(169,183,156,0.14);
+    border:1.5px dashed var(--sage);
+    border-radius:18px;
+    padding:24px 18px;
+  }
+  .guarantee .seal{width:56px; margin:0 auto 12px;}
+  .guarantee h3{font-size:17px; margin-bottom:8px;}
+  .guarantee p{font-size:13.5px; color:var(--plum-soft);}
+
+  footer{
+    text-align:center;
+    padding:30px 22px 110px;
+    font-size:11.5px;
+    color:var(--plum-soft);
+    line-height:1.7;
+  }
+
+  /* ---------- sticky bottom CTA ---------- */
+  .sticky-cta{
+    position:fixed; bottom:0; left:0; right:0;
+    background:var(--white);
+    box-shadow:0 -6px 20px rgba(74,57,66,0.14);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    z-index:999;
+    transform:translateY(120%);
+    transition:transform .4s ease;
+  }
+  .sticky-cta.show{transform:translateY(0);}
+  .sticky-cta .row{display:flex; align-items:center; gap:12px; max-width:480px; margin:0 auto;}
+  .sticky-cta .cta-btn{padding:14px 14px; font-size:14.5px; margin:0;}
+</style>
+</head>
+<body>
+
+<div class="trustbar">🔒 COMPRA 100% SEGURA &nbsp;•&nbsp; <strong>OFERTA VÁLIDA APENAS HOJE, 30/06/2026</strong></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal in">🧵 NOVO ÂNGULO</span>
+    <h1 class="reveal in">Transforme o bordado em <em>renda extra</em>, mesmo sem saber desenhar</h1>
+
+    <div class="hero-img reveal in delay1">
+      <img src="img/hero-guia.jpg" alt="Guia de Pontos e Cores - Bordados de Refúgio">
+    </div>
+
+    <p class="sub reveal in delay2">1.500 riscos prontos + guia de pontos e cores + um caminho real para vender suas peças. Você escolhe o risco, aplica no tecido, segue as cores — e descobre como cobrar por isso.</p>
+
+    <a href="#oferta" class="cta-btn reveal in delay3">QUERO COMEÇAR A BORDAR E VENDER</a>
+    <p class="cta-micro">Acesso imediato • Pagamento único • Garantia de 7 dias</p>
+  </div>
+</section>
+
+<div class="thread"><svg viewBox="0 0 400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 0, 100 17 T 200 17 T 300 17 T 400 17" stroke="#D8A7A0" stroke-width="2" fill="none" stroke-dasharray="6 5"/></svg></div>
+
+<!-- WHY INCOME ANGLE -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">Por que bordado pode ser sua <em>renda extra</em></h2>
+    <p class="section-sub reveal">O mercado de artesanato está em alta — e quem já tem riscos prontos e sabe combinar cores começa na frente.</p>
+
+    <div class="img-card reveal">
+      <img src="img/riscos-acervo.jpg" alt="Acervo de riscos exclusivos para bordar">
+    </div>
+
+    <div class="income-card reveal">
+      <span class="tag">Demanda real</span>
+      <h3>Peças bordadas vendem bem</h3>
+      <p>Toalhas, panos de prato, camisetas e bolsas personalizadas com bordado têm alta procura em feiras, redes sociais e encomendas — e o valor agregado da mão de obra é alto.</p>
+    </div>
+
+    <div class="income-card reveal delay1">
+      <span class="tag">Baixo investimento</span>
+      <h3>Você já tem (quase) tudo</h3>
+      <p>Com tecido, linha, agulha e um bastidor você começa. Os riscos e o guia de cores substituem anos de prática em desenho — o que mais trava quem quer empreender com isso.</p>
+    </div>
+
+    <div class="income-card reveal delay2">
+      <span class="tag">Sem precisar desenhar</span>
+      <h3>Os riscos prontos eliminam a maior barreira</h3>
+      <p>A maioria das mulheres desiste antes de começar por achar que "não tem talento para desenhar". Aqui você nunca parte do zero: escolhe entre 1.500 riscos exclusivos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><svg viewBox="0 0 400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 34, 100 17 T 200 17 T 300 17 T 400 17" stroke="#A9B79C" stroke-width="2" fill="none" stroke-dasharray="6 5"/></svg></div>
+
+<!-- OBJECTION BREAKER -->
+<section>
+  <div class="wrap">
+    <div class="objection reveal">
+      <h3>"Mas eu não sei nem desenhar uma flor..."</h3>
+      <p>Você não precisa. <span class="strike">Talento para desenho</span> não é mais pré-requisito.</p>
+      <p>Com riscos prontos para transferir direto no tecido, o seu trabalho é só bordar — e isso qualquer uma aprende com o guia de pontos passo a passo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">Você recebe tudo na hora, no seu e-mail</h2>
+    <p class="section-sub reveal">Um material completo para bordar com leveza — e abrir as portas para vender.</p>
+
+    <ul class="deliver-list">
+      <li class="reveal">
+        <svg class="ic" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#D8A7A0" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="#D8A7A0" stroke-width="1.6"/></svg>
+        <div><strong>Guia de Pontos e Paleta de Cores</strong><span>DMC / Anchor, sem travar nas combinações</span></div>
+      </li>
+      <li class="reveal delay1">
+        <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M4 12c2-6 14-6 16 0-2 6-14 6-16 0Z" stroke="#A9B79C" stroke-width="1.6"/><circle cx="12" cy="12" r="2.2" stroke="#A9B79C" stroke-width="1.6"/></svg>
+        <div><strong>1.500 riscos exclusivos</strong><span>Florais, botânicos, infantis e religiosos</span></div>
+      </li>
+      <li class="reveal delay2">
+        <svg class="ic" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2" stroke="#C28E89" stroke-width="1.6"/><path d="M8 9h8M8 13h5" stroke="#C28E89" stroke-width="1.6"/></svg>
+        <div><strong>Curso para iniciantes a avançadas</strong><span>Vídeo-aulas guiando cada etapa de cada ponto</span></div>
+      </li>
+      <li class="reveal delay3">
+        <svg class="ic" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2l.9-5.5-4-3.9 5.5-.8L12 3Z" stroke="#8FA180" stroke-width="1.5"/></svg>
+        <div><strong>Acesso vitalício</strong><span>Estude e consulte sempre que quiser</span></div>
+      </li>
+    </ul>
+
+    <div class="img-card reveal" style="margin-top:6px;">
+      <img src="img/guia-pontos.jpg" alt="Guia de pontos sugeridos para bordar">
+    </div>
+    <div class="img-card reveal delay1">
+      <img src="img/paleta-cores.jpg" alt="Paleta de cores DMC e Anchor para bordado">
+    </div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">Veja o estilo dos riscos</h2>
+    <p class="section-sub reveal">Riscos prontos, fáceis de seguir, para todos os níveis.</p>
+    <div class="gallery reveal">
+      <div class="tile"><img src="img/risco-tulipa-1.jpg" alt="Risco de tulipas para bordar"></div>
+      <div class="tile"><img src="img/risco-tulipa-2.jpg" alt="Risco de tulipas estilo esboço"></div>
+      <div class="tile"><img src="img/composicao-bastidor.jpg" alt="Composição para bastidor 16cm"></div>
+    </div>
+
+    <div class="img-card reveal" style="margin-top:16px;">
+      <img src="img/tulipa-finalizada.jpg" alt="Buquê de tulipas bordado finalizado">
+    </div>
+    <p class="section-sub reveal" style="margin-top:-6px;">É isso que você vai conseguir criar seguindo o guia, do risco ao resultado final.</p>
+  </div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">Feito para mulheres que querem <em>mais</em></h2>
+
+    <div class="who-card reveal">
+      <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l4-4 11 4M3 13l5-5 9 3" stroke="#D8A7A0" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+      <div><h4>Quer uma renda extra de casa</h4><p>Sem precisar de loja física, equipamento caro ou experiência prévia em vendas.</p></div>
+    </div>
+    <div class="who-card reveal delay1">
+      <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#A9B79C" stroke-width="1.6"/><path d="M12 8v4l3 2" stroke="#A9B79C" stroke-width="1.6"/></svg></div>
+      <div><h4>Tem pouco tempo livre</h4><p>Riscos prontos economizam horas de pesquisa e desenho — você só borda.</p></div>
+    </div>
+    <div class="who-card reveal delay2">
+      <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21c4-4 7-7.5 7-11A7 7 0 0 0 5 10c0 3.5 3 7 7 11Z" stroke="#C28E89" stroke-width="1.6"/></svg></div>
+      <div><h4>Busca leveza no dia a dia</h4><p>Bordar também desacelera a mente — o lucro vem como consequência, não como pressão.</p></div>
+    </div>
+    <div class="who-card reveal delay3">
+      <div class="ic-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12c2-6 14-6 16 0-2 6-14 6-16 0Z" stroke="#8FA180" stroke-width="1.6"/></svg></div>
+      <div><h4>Nunca bordou ou já borda há anos</h4><p>Conteúdo para iniciantes e desenhos novos para quem já tem experiência.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><svg viewBox="0 0 400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 34, 100 17 T 200 17 T 300 17 T 400 17" stroke="#A9B79C" stroke-width="2" fill="none" stroke-dasharray="6 5"/></svg></div>
+
+<!-- BONUSES -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">🍃 + 8 bônus para você <em>vender</em> mais fácil</h2>
+
+    <div class="bonus-card reveal">
+      <div class="bonus-num">01</div>
+      <div><h4>+400 Riscos Extras</h4><p>Desenhos atualizados para você nunca ficar sem ideia.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal delay1">
+      <div class="bonus-num">02</div>
+      <div><h4>Guia de Cores para Bordado</h4><p>Combine cores com segurança em qualquer peça.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal delay2">
+      <div class="bonus-num">03</div>
+      <div><h4>Guia prático para criar produtos</h4><p>Técnicas e inspirações para se destacar no mercado.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal">
+      <div class="bonus-num">04</div>
+      <div><h4>Materiais Essenciais</h4><p>A lista definitiva para começar sem gastar à toa.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal delay1">
+      <div class="bonus-num">05</div>
+      <div><h4>Ideias de Embalagens Criativas</h4><p>Transforme a entrega em experiência — e cobre mais por isso.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal delay2">
+      <div class="bonus-num">06</div>
+      <div><h4>Guia de Tamanho para Bastidores</h4><p>Acerte sempre a tensão do tecido e o desenho centralizado.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal">
+      <div class="bonus-num">07</div>
+      <div><h4>Suporte exclusivo via WhatsApp</h4><p>Tire dúvidas sobre pontos, riscos e cores direto com a equipe.</p><div class="val"><span class="old">R$37</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+    <div class="bonus-card reveal delay1">
+      <div class="bonus-num">08</div>
+      <div><h4>Riscos novos toda semana</h4><p>Acervo sempre atualizado, sem custo adicional, para sempre.</p><div class="val"><span class="old">R$27</span> <span class="free">GRÁTIS</span></div></div>
+    </div>
+
+    <div class="img-card reveal" style="margin-top:6px;">
+      <img src="img/whatsapp-suporte.jpg" alt="Suporte exclusivo via WhatsApp para alunas">
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section>
+  <div class="wrap">
+    <div class="countdown-wrap reveal">
+      <span class="label">⏰ Oferta por tempo limitado</span>
+      <div class="countdown">
+        <div class="box"><div class="num" id="hh">00</div><div class="unit">HORAS</div></div>
+        <div class="box"><div class="num" id="mm">00</div><div class="unit">MIN</div></div>
+        <div class="box"><div class="num" id="ss">00</div><div class="unit">SEG</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="thread"><svg viewBox="0 0 400 34" preserveAspectRatio="none"><path d="M0 17 Q 50 0, 100 17 T 200 17 T 300 17 T 400 17" stroke="#D8A7A0" stroke-width="2" fill="none" stroke-dasharray="6 5"/></svg></div>
+
+<!-- PRICING -->
+<section id="oferta">
+  <div class="wrap">
+    <div class="urgency-ribbon reveal">⏰ OFERTA VÁLIDA APENAS HOJE, 30/06/2026</div>
+    <h2 class="section-title reveal">Escolha o melhor plano para você</h2>
+    <p class="section-sub reveal">92% das pessoas escolhem o plano completo abaixo</p>
+
+    <div class="price-card featured reveal">
+      <span class="badge-best">⚡ MAIS VENDIDO • 8 BÔNUS INCLUSOS</span>
+
+      <div class="img-card" style="margin:14px 0 16px;">
+        <img src="img/pacote-completo.jpg" alt="Pacote Completo Bordados de Refúgio com todos os bônus">
+      </div>
+
+      <h3>Pacote Completo Bordados de Refúgio</h3>
+      <p class="sub-tag">Guia + Curso + 8 Bônus inclusos</p>
+
+      <ul class="feat-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> Guia de Pontos e Paleta DMC/Anchor</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> 1.500 riscos: florais, infantis e mais</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> Curso completo: iniciante ao avançado</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> 8 bônus para criar e vender suas peças</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> Suporte exclusivo via WhatsApp</li>
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#8FA180" stroke-width="2.2" stroke-linecap="round"/></svg> Acesso vitalício</li>
+      </ul>
+
+      <div class="price-box">
+        <div class="from">de <span class="strike">R$177,00</span> por apenas:</div>
+        <div class="now">R$<span>24</span><sup>,90</sup></div>
+        <span class="save">Você economiza R$152,10</span>
+      </div>
+
+      <a href="https://pay.hotmart.com/K104247446N?off=mb10r79b&checkoutMode=10" class="cta-btn">🔥 QUERO ESSE PLANO AGORA</a>
+      <p class="cta-micro">Acesso imediato após o pagamento</p>
+    </div>
+
+    <div class="price-card reveal">
+      <h3>Plano Básico</h3>
+      <p class="sub-tag">Sem curso e sem bônus</p>
+
+      <div class="img-card" style="margin:0 0 16px;">
+        <img src="img/risco-tulipa-1.jpg" alt="Riscos exclusivos plano básico">
+      </div>
+
+      <ul class="feat-list">
+        <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-10" stroke="#D8A7A0" stroke-width="2.2" stroke-linecap="round"/></svg> 1.000 riscos exclusivos</li>
+        <li class="muted"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#C9B6BC" stroke-width="2"/></svg> Não inclui curso e bônus</li>
+      </ul>
+
+      <div class="price-box">
+        <div class="from">de <span class="strike">R$47,00</span> por:</div>
+        <div class="now">R$<span>14</span><sup>,90</sup></div>
+        <span class="save">Você economiza R$32,10</span>
+      </div>
+
+      <a href="https://pay.hotmart.com/K104247446N?off=c6dnlkg5&checkoutMode=10" class="cta-btn">QUERO O PLANO BÁSICO</a>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section>
+  <div class="wrap">
+    <div class="guarantee reveal">
+      <svg class="seal" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="#8FA180" stroke-width="2.5"/><path d="M20 33l8 8 16-16" stroke="#8FA180" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Garantia de 7 dias</h3>
+      <p>Teste a metodologia sem risco. Se não for para você, devolvemos 100% do valor, sem perguntas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title reveal">Perguntas Frequentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">Como recebo o material? <span class="plus">+</span></div>
+      <div class="faq-a">Após o pagamento, você recebe no seu e-mail todas as instruções de acesso. É rápido e simples.</div>
+    </div>
+    <div class="faq-item reveal delay1">
+      <div class="faq-q">Por quanto tempo terei acesso? <span class="plus">+</span></div>
+      <div class="faq-a">O acesso é vitalício. Você pode cancelar em até 7 dias caso não goste.</div>
+    </div>
+    <div class="faq-item reveal delay2">
+      <div class="faq-q">Não recebi o material, o que faço? <span class="plus">+</span></div>
+      <div class="faq-a">Verifique as caixas de spam ou lixo eletrônico — o link pode ser direcionado para lá automaticamente.</div>
+    </div>
+    <div class="faq-item reveal delay3">
+      <div class="faq-q">Tenho garantia real? <span class="plus">+</span></div>
+      <div class="faq-a">Sim. Você pode solicitar reembolso total nos primeiros 7 dias após a compra, sem burocracia.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Posso imprimir os riscos? <span class="plus">+</span></div>
+      <div class="faq-a">Sim! Você pode imprimir quantas vezes quiser para uso pessoal ou para suas peças à venda.</div>
+    </div>
+    <div class="faq-item reveal delay1">
+      <div class="faq-q">Pago mensalidade? <span class="plus">+</span></div>
+      <div class="faq-a">Não. É um pagamento único, com acesso vitalício a todos os riscos e bônus.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Copyright © 2026 | Todos os direitos reservados.<br><br>
+  Todos os direitos da obra <em>Bordados de Refúgio</em> são reservados à EDITORA WISDOM de Info-produtos. A reprodução não autorizada desta publicação, no todo ou em parte, por qualquer meio, constitui violação de direitos autorais (artigo 184 do Código Penal e Lei nº 9.610/98), sujeitando-se às penalidades civis e criminais previstas na legislação aplicável.
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="row">
+    <a href="#oferta" class="cta-btn">🔥 GARANTIR OFERTA POR R$24,90</a>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, {threshold:0.15});
+  reveals.forEach(el=>io.observe(el));
+
+  // Sticky CTA after hero
+  const sticky = document.getElementById('stickyCta');
+  const heroEnd = document.querySelector('.hero').offsetTop + document.querySelector('.hero').offsetHeight;
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > heroEnd){ sticky.classList.add('show'); }
+    else{ sticky.classList.remove('show'); }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Countdown timer (resets daily-ish, ends in 11h59m for urgency demo)
+  function startCountdown(){
+    let target = localStorage.getItem('cd_target');
+    if(!target || Date.now() > parseInt(target)){
+      target = Date.now() + 1000*60*60*12; // 12h window
+      try{ localStorage.setItem('cd_target', target); }catch(e){}
+    }
+    function tick(){
+      const diff = Math.max(0, parseInt(target) - Date.now());
+      const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+      document.getElementById('hh').textContent = h;
+      document.getElementById('mm').textContent = m;
+      document.getElementById('ss').textContent = s;
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+  try{ startCountdown(); }catch(e){
+    // fallback without localStorage
+    let diff = 1000*60*60*12;
+    setInterval(()=>{
+      diff -= 1000;
+      const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+      document.getElementById('hh').textContent = h;
+      document.getElementById('mm').textContent = m;
+      document.getElementById('ss').textContent = s;
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
